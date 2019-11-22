@@ -1,0 +1,59 @@
+LOCATION: Doc/projects/inter/api-server
+
+# [Building Very Fast App Backends with Falcon Web Framework on PyPy](https://www.alibabacloud.com/blog/building-very-fast-app-backends-with-falcon-web-framework-on-pypy_594282)
+
+$ cd ~/.ssh
+$ aws2micro
+Started with AIM:
+Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-0dd655843c87b6930
+$ sudo apt-get update; apt-get upgrade
+$ sudo apt install python3
+$ sudo apt install python3-pip
+# install Conda / Numpy
+$ apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+$ cd /tmp; curl -O https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
+$ bash Anaconda3-2019.03-Linux-x86_64.sh
+# Do you wish to prepend Anaconda...
+  $ yes
+$ source ~/.bashrc
+#!!! CLOSE/REOPEN NEW SHELL
+$ conda list
+# create environments:
+  $ conda create --name my_env python=3
+  $ conda activate my_env
+# If you'd prefer that conda's base environment not be activated on startup,
+   set the auto_activate_base parameter to false:
+  $ conda config --set auto_activate_base false
+# {NOTE: Anaconda and JetBrains to bring you Anaconda-powered environments tightly integrated in the PyCharm IDE.}
+# {PyCharm for Anaconda is available at: https://www.anaconda.com/pycharm}
+$ conda install numpy # also installs numba??
+
+# sudo apt-get install python3-dev
+$ wget https://bitbucket.org/pypy/pypy/downloads/pypy3.6-v7.2.0-linux64.tar.bz2  # pypy3-v6.0.0-linux64.tar.bz2
+$ sudo tar -xvf pypy3.6-v7.2.0-linux64.tar.bz2  -C /opt # pypy3-v6.0.0-linux64.tar.bz2 
+$ sudo ln -s /opt/pypy3.6-v7.2.0-linux64/bin/pypy3 /usr/local/bin/pypy3
+$ sudo chown -R ubuntu /opt/pypy3.6-v7.2.0-linux64/
+# pypy3 # RUNS!
+
+#NEED TO ERMANENTLY ADD PYPY PATH!!!
+$ export PATH=$PATH:/opt # (temporary) /opt/pypy3.6-v7.2.0-linux64/bin
+
+$ wget https://bootstrap.pypa.io/get-pip.py
+$ pypy3 get-pip.py   # pypy3 -m ensurepip   
+$ sudo apt-get install python3-pip
+$ pip3 install virtualenvwrapper
+# Need to pypy/pip install numpy 
+#  some suggestion that pypy might run faster using Python2.7
+
+###  T2 Large Instance Comparison
+AWS makes it easy to scale up to larger servers. The profiling software was developed and tested on a `t2micro` instance,
+and an [Amazon Machine Image](AMI) was exported. This AMI was used to bring up a `t2large` instance for comparison. 
+Here is a comparison table for the t2micro and t2large instances:
+
+
+## Summary
+
+
+#!!DONT USE THIS AMASON AMI!!#
+Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type - ami-0bce08e823ed38bdd
+  Based on CentOS: says it comes with Python, but is Python2
